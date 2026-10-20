@@ -67,3 +67,18 @@
   * `PUT /api/habitos/{id}` — Edita descrição ou meta do hábito.
   * `DELETE /api/habitos/{id}` — Exclui hábito.
   * `POST /api/habitos/{id}/checkin` — Registra realização do hábito e atualiza conquistas.
+
+* **Pseudocódigo da Regra de Negócio (Check-in Diário e Conquista):**
+```text
+Função realizarCheckin(habitoId):
+    habito = repository.buscarPorId(habitoId)
+    
+    habito.diasConsecutivos = habito.diasConsecutivos + 1
+    
+    Se habito.diasConsecutivos >= habito.metaDias Então
+        habito.conquistaAlcancada = Verdadeiro
+    FimSe
+    
+    Retornar repository.salvar(habito)
+FimFuncao
+```
