@@ -1,0 +1,37 @@
+<a class="btn" routerLink="/habitos/novo">Novo hábito</a>
+
+@if (sucesso) {
+  <div class="alerta sucesso">{{ sucesso }}</div>
+}
+@if (erro) {
+  <div class="alerta erro">{{ erro }}</div>
+}
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Dias consecutivos</th>
+      <th>Meta (dias)</th>
+      <th>Conquista</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (h of habitos; track h.id) {
+      <tr>
+        <td>{{ h.descricao }}</td>
+        <td>{{ h.diasConsecutivos }}</td>
+        <td>{{ h.metaDias }}</td>
+        <td>{{ h.conquistaAlcancada ? '🏆 Alcançada' : 'Em andamento' }}</td>
+        <td>
+          <button class="ok" (click)="checkin(h)">Check-in</button>
+          <a class="btn" [routerLink]="['/habitos', h.id, 'editar']">Editar</a>
+          <button class="perigo" (click)="excluir(h)">Excluir</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">Nenhum hábito cadastrado.</td></tr>
+    }
+  </tbody>
+</table>

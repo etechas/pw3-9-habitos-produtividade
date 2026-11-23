@@ -1,0 +1,14 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #222; }
+.container { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #ddd; text-align: left; }
+button, .btn { padding: 6px 12px; margin-right: 4px; border: 0; border-radius: 4px; cursor: pointer; background: #1976d2; color: #fff; text-decoration: none; font-size: 14px; }
+button.perigo { background: #d32f2f; }
+button.ok { background: #388e3c; }
+button:disabled { background: #aaa; cursor: not-allowed; }
+.alerta { padding: 10px 12px; border-radius: 4px; margin: 12px 0; }
+.alerta.sucesso { background: #e1f5e3; color: #1b5e20; }
+.alerta.erro { background: #fdecea; color: #b71c1c; }
+label { display: block; margin-top: 12px; font-weight: bold; }
+input { width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px; }
+.campo-erro { color: #b71c1c; font-size: 13px; }

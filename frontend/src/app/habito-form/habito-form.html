@@ -1,0 +1,30 @@
+<h2>{{ id ? 'Editar hábito' : 'Novo hábito' }}</h2>
+
+@if (erro) {
+  <div class="alerta erro">{{ erro }}</div>
+}
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <label for="descricao">Descrição</label>
+  <input id="descricao" type="text" formControlName="descricao">
+  @if (form.controls.descricao.touched && form.controls.descricao.errors) {
+    <div class="campo-erro">
+      @if (form.controls.descricao.errors['required']) { A descrição é obrigatória. }
+      @else if (form.controls.descricao.errors['minlength']) { A descrição deve ter ao menos 3 caracteres. }
+    </div>
+  }
+
+  <label for="metaDias">Meta (dias)</label>
+  <input id="metaDias" type="number" formControlName="metaDias">
+  @if (form.controls.metaDias.touched && form.controls.metaDias.errors) {
+    <div class="campo-erro">
+      @if (form.controls.metaDias.errors['required']) { A meta é obrigatória. }
+      @else if (form.controls.metaDias.errors['min']) { A meta deve ser de no mínimo 1 dia. }
+    </div>
+  }
+
+  <p>
+    <button type="submit">Salvar</button>
+    <a class="btn perigo" routerLink="/habitos">Cancelar</a>
+  </p>
+</form>
